@@ -7,6 +7,16 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <fcntl.h>
+#include <sys/stat.h>
+#include <errno.h>
+
+/**
+ * struct free_all_lists - struct type to hold most variables of main
+ * @buff: char type
+ * @buff_cpy: char type
+ * @str: char type
+ * @arr: char type
+ */
 
 typedef struct free_all_lists
 {
@@ -16,9 +26,15 @@ typedef struct free_all_lists
 	char **arr;
 } list;
 
-
+/*functions for the shell*/
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+
+/*to print to stout*/
+int _printfchar(char c);
+int _printfs(char *str);
+
+void envt(char **envt);
 
 void free_all(list free_list, int ac);
 

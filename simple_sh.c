@@ -12,7 +12,7 @@
  * Return: 0 for success
  */
 
-int main(int argc, char **av)
+int main(int argc, char **av, char **env)
 {
 	int val, ac = 0, statu, i = 0, chk;
 	size_t n = 0;
@@ -69,6 +69,12 @@ int main(int argc, char **av)
 			free(all.arr);
 			exit(0);
 		}
+		if (_strcmp(all.arr[0], "env") == 0)
+		{
+			envt(env);
+			continue;
+		}
+
 		chk = stat(all.arr[0], &status);
 		if (chk == -1)
 		{
