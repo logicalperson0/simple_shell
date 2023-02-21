@@ -26,7 +26,7 @@ int main(int argc, char **av, char **env)
 
 	while (1)
 	{
-		_printfs("#cisfun$ ");
+		_printfs("$ ");
 		if (getline(&(all.buff), &n, stdin) == -1)
 		{
 			_printfchar('\n');
