@@ -57,6 +57,7 @@ int main(int argc, char **av)
 			i++;
 		}
 		all.arr[i] = NULL;
+		/*free(all.buff_cpy);*/
 		i = 0;
 		
 		if (all.arr[0] == NULL)
@@ -64,7 +65,7 @@ int main(int argc, char **av)
 
 		if (_strcmp(all.arr[0], "exit") == 0 && (all.arr[1] == NULL))
 		{
-			/*free_all(all, ac);*/
+			free(all.arr);
 			exit(0);
 		}
 
@@ -74,7 +75,7 @@ int main(int argc, char **av)
 		{
 			perror("Error");
 			/*free_all(all, ac);*/
-			return (-1);
+			exit (100);
 		}
 
 		if (my_pid == 0)
@@ -89,8 +90,11 @@ int main(int argc, char **av)
 		}
 		else
 			wait(&stat);
+
+		free(all.buff);
+		all.buff = NULL;
 	}
-	free_all(all, ac);
+	free(all.buff);
 
 	/*free(buff);
 	free(buff_cpy);
