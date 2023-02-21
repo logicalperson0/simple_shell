@@ -1,3 +1,4 @@
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,84 +12,89 @@
  * Return: 0 for success
  */
 
-int main(int anc, char **av)
+int main(int argc, char **av)
 {
-	int val, ac = 0, stat, i = 0, j = 0;
+	int val, ac = 0, stat, i = 0;
 	size_t n = 0;
-	char *buff = NULL, *buff_cpy = NULL;
-	char *str = NULL;
+	list all = {NULL, NULL, NULL, NULL};
+	/*char *buff = NULL, *buff_cpy = NULL, *str = NULL;*/
 	pid_t my_pid;
-	char **arr;
+	/*char **arr;*/
 
-	(void)anc;
+	(void)argc;
 
 	while (1)
 	{
 		printf("#cisfun$ ");
-		if (getline(&buff, &n, stdin) == -1)
+		if (getline(&(all.buff), &n, stdin) == -1)
 		{
 			/*putchar('\n');*/
+			/*free_all(all, ac);*/
 			return (-1);
 		}
 
-		buff_cpy = strdup(buff);
-		str = strtok(buff, " \n");
+		all.buff_cpy = _strdup(all.buff);
+		all.str = strtok(all.buff, " \n");
 
-		while (str)
+		while (all.str)
 		{
-			str = strtok(NULL, " \n");
+			all.str = strtok(NULL, " \n");
 			ac++;
 		}
 
-		arr = malloc(sizeof(char *) * (ac + 1));
-		str = strtok(buff_cpy, " \n");
-
-		while (str)
+		all.arr = malloc(sizeof(char *) * (ac + 1));
+		if (all.arr == NULL)
 		{
-			arr[i] = str;
-			str = strtok(NULL, " \n");
+			free(all.arr);
+			return (-1);
+		}
+		all.str = strtok(all.buff_cpy, " \n");
+
+		while (all.str)
+		{
+			all.arr[i] = all.str;
+			all.str = strtok(NULL, " \n");
 			i++;
 		}
-		arr[i] = NULL;
-
+		all.arr[i] = NULL;
 		i = 0;
-		/*printf("%d\n", i - 1);*/
 		
-		if (arr[0] == NULL)
+		if (all.arr[0] == NULL)
 			continue;
 
-		if (strcmp(arr[0], "exit") == 0 && (arr[1] == NULL))
+		if (_strcmp(all.arr[0], "exit") == 0 && (all.arr[1] == NULL))
+		{
+			/*free_all(all, ac);*/
 			exit(0);
+		}
 
 		my_pid = fork();
 
 		if (my_pid == -1)
 		{
 			perror("Error");
+			/*free_all(all, ac);*/
 			return (-1);
 		}
 
 		if (my_pid == 0)
 		{
-			val = execve(arr[0], arr, NULL);
+			val = execve(all.arr[0], all.arr, NULL);
 			if (val == -1)
 			{
 				perror(av[0]);
+				/*free_all(all, ac);*/
 				return (-1);
 			}
 		}
 		else
 			wait(&stat);
 	}
+	free_all(all, ac);
 
-	free(buff);
+	/*free(buff);
 	free(buff_cpy);
-	while (j < ac)
-	{
-		free(arr[j]);
-		j++;
-	}
-	free(arr);
+	free(arr);*/
 
 	return (0);
 }
