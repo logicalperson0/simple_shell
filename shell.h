@@ -34,6 +34,10 @@ int _strcmp(char *s1, char *s2);
 int _printfchar(char c);
 int _printfs(char *str);
 
+/*to strtok and return a char **array*/ 
+char **token(list all);
+void forking(char **av, list all);
+
 void envt(char **envt);
 
 void free_all(list free_list, int ac);
