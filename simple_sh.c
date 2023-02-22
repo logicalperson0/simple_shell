@@ -15,51 +15,61 @@
 int main(int argc, char **av, char **env)
 {
 	int chk;
+	unsigned int piping = 0;
 	size_t n = 0;
-	list all = {NULL, NULL, NULL};
-	/*char *buff = NULL, *buff_cpy = NULL, *str = NULL;*/
-	/*pid_t my_pid;*/
+	list all = {NULL, NULL, NULL, NULL, NULL};
 	struct stat status;
-	/*char **arr;*/
+	all.envts = env;
+	all.arv = av;
 
 	(void)argc;
 
-	while (1)
+	if (!isatty(STDIN_FILENO))
+		piping = 1;
+	if (piping == 0)
+		_put("$ ");
+
+	while (getline(&(all.buff), &n, stdin) != -1)
 	{
-		_printfs("$ ");
-		if (getline(&(all.buff), &n, stdin) == -1)
+		/*_put("$ ");*/
+		/*if (getline(&(all.buff), &n, stdin) == -1)
 		{
 			_printfchar('\n');
 			free(all.arr);
 			return (-1);
-		}
+		}*/
 
 		all.arr = token(all.buff, "\n");
 		
 		if (all.arr[0] == NULL)
+		{
 			continue;
+		}
 
 		if (_strcmp(all.arr[0], "exit") == 0 && (all.arr[1] == NULL))
 		{
 			free(all.arr);
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		if (_strcmp(all.arr[0], "env") == 0)
 		{
-			envt(env);
+			envt(all.envts);
 			continue;
 		}
 
 		chk = stat(all.arr[0], &status);
 		if (chk == -1)
 		{
-			perror(av[0]);
+			perror(all.arv[0]);
 			continue;
 		}
 
 		forking(av, all);
 
 		free(all.buff);
+		if (piping = 0)
+			_put("$ ");
+
 		all.buff = NULL;
 	}
 	/*free_all(all, ac);*/
@@ -68,5 +78,5 @@ int main(int argc, char **av, char **env)
 	free(buff_cpy);
 	free(arr);*/
 
-	return (0);
+	exit(EXIT_SUCCESS);
 }

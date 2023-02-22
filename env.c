@@ -8,7 +8,8 @@ void envt(char **envt)
 
 	while (envt[i] != NULL)
 	{
-		printf("%s\n", envt[i]);
+		_put(envt[i]);
+		_put("\n");
 		i++;
 	}
 }

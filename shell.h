@@ -23,6 +23,8 @@ typedef struct free_all_lists
 	char *buff;
 	char *str;
 	char **arr;
+	char **arv;
+	char **envts;
 } list;
 
 /*functions for the shell*/
@@ -31,7 +33,9 @@ int _strcmp(char *s1, char *s2);
 
 /*to print to stout*/
 int _printfchar(char c);
-int _printfs(char *str);
+void _printfs(char *str, int line);
+ssize_t _put(char *strs);
+int _printnum(int num);
 
 /*to strtok and return a char **array*/ 
 char **token(char *buff, char *delim);

@@ -17,12 +17,12 @@ void forking(char **av, list all)
 	{
 		perror("Error:");
 		/*free_all(all, ac);*/
-		exit (100);
+		exit (EXIT_FAILURE);
 	}
 
 	if (my_pid == 0)
 	{
-		val = execve(all.arr[0], all.arr, NULL);
+		val = execve(all.arr[0], all.arr, all.envts);
 		if (val == -1)
 		{
 			perror(av[0]);

@@ -5,10 +5,11 @@
  * _printfs - func that prints to stout
  *
  * @str: parameter
+ * @line: parameter
  * Return: stout of args, if null write (null)
  */
 
-int _printfs(char *str)
+void _printfs(char *str, int line)
 {
 	int i = 0;
 	char *s;
@@ -17,7 +18,6 @@ int _printfs(char *str)
 	if (s == NULL)
 	{
 		write(1, "(null)", 6);
-		return (6);
 	}
 	else
 	{
@@ -27,5 +27,6 @@ int _printfs(char *str)
 			i++;
 		}
 	}
-	return (i);
+	if (line == 0)
+		write(1, "\n", 1);
 }
