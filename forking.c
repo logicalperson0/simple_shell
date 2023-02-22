@@ -27,7 +27,7 @@ void forking(char **av, list all)
 		{
 			perror(av[0]);
 			/*free_all(all, ac);*/
-			exit (1);
+			exit (EXIT_FAILURE);
 		}
 	}
 	else

@@ -7,34 +7,37 @@
  *
  * Return: double ptr to a array
  */
-char **token(list all)
+char **token(char *buff, char *delim)
 {
 	int i = 0, ac = 0;
+	char *buff_cpy;
+	char *str;
+	char **buffi;
 
-	all.buff_cpy = _strdup(all.buff);
-	all.str = strtok(all.buff, " \n");
+	buff_cpy = _strdup(buff);
+	str = strtok(buff, delim);
 
-	while (all.str)
+	while (str)
 	{
-		all.str = strtok(NULL, " \n");
+		str = strtok(NULL, " \n");
 		ac++;
 	}
 
-	all.arr = malloc(sizeof(char *) * (ac + 1));
-	if (all.arr == NULL)
+	buffi = malloc(sizeof(char *) * (ac + 1));
+	if (buffi == NULL)
 	{
 		return (NULL);
 	}
-	all.str = strtok(all.buff_cpy, " \n");
+	str = strtok(buff_cpy, " \n");
 
-	while (all.str)
+	while (str)
 	{
-		all.arr[i] = all.str;
-		all.str = strtok(NULL, " \n");
+		buffi[i] = _strdup(str);
+		str = strtok(NULL, " \n");
 		i++;
 	}
-	all.arr[i] = NULL;
-	/*free(all.buff_cpy);*/
+	buffi[i] = NULL;
+	free(buff_cpy);
 
-	return (all.arr);
+	return (buffi);
 }

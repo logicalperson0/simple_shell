@@ -12,7 +12,6 @@ void free_all(list free_list, int xc)
 	int i = 0;
 
 	free(free_list.buff);
-	free(free_list.buff_cpy);
 	while (xc > i)
 	{
 		free(free_list.arr[i]);

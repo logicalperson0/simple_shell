@@ -21,7 +21,6 @@
 typedef struct free_all_lists
 {
 	char *buff;
-	char *buff_cpy;
 	char *str;
 	char **arr;
 } list;
@@ -35,7 +34,7 @@ int _printfchar(char c);
 int _printfs(char *str);
 
 /*to strtok and return a char **array*/ 
-char **token(list all);
+char **token(char *buff, char *delim);
 void forking(char **av, list all);
 
 void envt(char **envt);
