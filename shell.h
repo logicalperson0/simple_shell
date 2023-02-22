@@ -35,6 +35,7 @@ typedef struct free_all_lists
 /*functions for the shell*/
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+int _strlen(char *s);
 
 /*to print to stout*/
 int _printfchar(char c);
@@ -42,15 +43,22 @@ void _printfs(char *str, int line);
 ssize_t _put(char *strs);
 int _printnum(int num);
 
-/*to strtok and return a char **array*/
+/*to strtok and return a char **array by child process*/
 char **token(char *buff, char *delim);
 void forking(list all);
 
+/*prints out the buildin envt*/
 void envt(char **envt);
 
-/* frees the heap*/
+/*path to fine the cmds; without inputting the full path*/
+int envt_i(list e, char *s);
+char *find_dir(char **dir_path, char *c);
+char *combine_path(char *dir, char *c);
+char *get_path(list pathing, char *buff);
+char **strtok_path(list path, int x, char *s);
+
+/*frees the heap*/
 void free_all(char **array);
-void free_envt(char **envts);
 
 /* prints out the error*/
 void error_p(char *argv, int c, char *cmd);

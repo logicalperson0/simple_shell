@@ -10,32 +10,40 @@ void forking(list all)
 	pid_t my_pid;
 	int val, chk;
 	struct stat status;
-
-	chk = stat(all.arr[0], &status);
-	if (chk == -1)
-	{
-		error_p(all.arv[0], all.count, all.buff);
-		_printfs(": not found", 0);
-	}
+	char *cmd, *tempo;
 
 	my_pid = fork();
-
-	if (my_pid == -1)
+	if (my_pid != 0)
+		wait(0);
+	else
 	{
-		error_p(all.arv[0], all.count, all.buff);
-		_printfs(": not found", 0);
-		/*exit(EXIT_FAILURE);*/
-	}
 
-	else if (my_pid == 0)
-	{
-		val = execve(all.arr[0], all.arr, all.envts);
-		if (val == -1)
+		tempo = all.arr[0];
+		cmd = get_path(all, all.arr[0]);
+		if (cmd == NULL)
 		{
-			/*error_p(all.arv[0], all.count, all.buff);*/
-			exit(EXIT_FAILURE);
+			chk = stat(tempo, &status);
+			if (chk == -1)
+			{
+				error_p(all.arv[0], all.count, all.buff);
+				_printfs(": not found", 0);
+			}
+			cmd = tempo;
+		}
+		all.arr[0] = cmd;
+
+		if (my_pid == -1)
+		{
+			error_p(all.arv[0], all.count, all.buff);
+			_printfs(": not found", 0);
+			/*exit(EXIT_FAILURE);*/
+		}
+
+		else if (my_pid == 0)
+		{
+			val = execve(all.arr[0], all.arr, all.envts);
+			if (val == -1)
+				exit(EXIT_FAILURE);
 		}
 	}
-	else
-		wait(0);
 }

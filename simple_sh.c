@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * signals - handles the ^C signal interupt
+ * signals - handles the ctrl-C signal interupt
  * @i: parameter
  */
 static void signals(int i)
@@ -42,8 +42,7 @@ int main(int argc, char **av, char **env)
 			if (_strcmp(all.arr[0], "exit") == 0 && (all.arr[1] == NULL))
 			{
 				free_all(all.arr);
-				free(all.buff);
-				exit(EXIT_SUCCESS);
+				break;
 			}
 			if (_strcmp(all.arr[0], "env") == 0)
 				envt(all.envts);
