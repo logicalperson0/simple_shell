@@ -1,5 +1,6 @@
 #ifndef _shell_h_
 #define _shell_h_
+#define i(x) (void)(x)
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +10,9 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <errno.h>
+
+/* for the ^C interput*/
+unsigned int sig_indicator;
 
 /**
  * struct free_all_lists - struct type to hold most variables of main
