@@ -13,9 +13,11 @@
 /**
  * struct free_all_lists - struct type to hold most variables of main
  * @buff: char type
- * @buff_cpy: char type
  * @str: char type
  * @arr: char type
+ * @arv: char type
+ * @envts: char type
+ * @count: int type
  */
 
 typedef struct free_all_lists
@@ -38,7 +40,7 @@ void _printfs(char *str, int line);
 ssize_t _put(char *strs);
 int _printnum(int num);
 
-/*to strtok and return a char **array*/ 
+/*to strtok and return a char **array*/
 char **token(char *buff, char *delim);
 void forking(list all);
 
