@@ -11,8 +11,6 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-/* for the ^C interput*/
-unsigned int sig_indicator;
 
 /**
  * struct free_all_lists - struct type to hold most variables of main
@@ -57,5 +55,8 @@ void free_envt(char **envts);
 /* prints out the error*/
 void error_p(char *argv, int c, char *cmd);
 void error_out(char *argv, int c, char *cmd);
+
+/* for the ^C interput*/
+unsigned int sig_flag;
 
 #endif

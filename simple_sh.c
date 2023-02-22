@@ -6,7 +6,7 @@
 static void signals(int i)
 {
 	(void)i;
-	if (sig_indicator == 0)
+	if (sig_flag == 0)
 		_put("\n$ ");
 	else
 		_put("\n");
@@ -32,7 +32,7 @@ int main(int argc, char **av, char **env)
 		piping = 1;
 	if (piping == 0)
 		_put("$ ");
-	sig_indicator = 0;
+	sig_flag = 0;
 	while (getline(&(all.buff), &n, stdin) != -1)
 	{
 		all.count++;
