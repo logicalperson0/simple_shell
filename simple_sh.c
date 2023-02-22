@@ -39,7 +39,7 @@ int main(int argc, char **av, char **env)
 		all.arr = token(all.buff, " \n");
 		if (all.arr && all.arr[0])
 		{
-			if (_strcmp(all.arr[0], "exit") == 0 && (all.arr[1] == NULL))
+			if (_strcmp(all.arr[0], "exit") == 0)
 			{
 				free_all(all.arr);
 				break;
