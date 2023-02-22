@@ -27,23 +27,20 @@ void forking(list all)
 			{
 				error_p(all.arv[0], all.count, all.buff);
 				_printfs(": not found", 0);
+				exit(100);
 			}
 			cmd = tempo;
 		}
 		all.arr[0] = cmd;
 
-		if (my_pid == -1)
-		{
-			error_p(all.arv[0], all.count, all.buff);
-			_printfs(": not found", 0);
-			/*exit(EXIT_FAILURE);*/
-		}
-
-		else if (my_pid == 0)
+		if (all.arr[0] != NULL)
 		{
 			val = execve(all.arr[0], all.arr, all.envts);
 			if (val == -1)
-				exit(EXIT_FAILURE);
+			{
+				error_p(all.arv[0], all.count, all.buff);
+				exit(1);
+			}
 		}
 	}
 }

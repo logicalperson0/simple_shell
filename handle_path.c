@@ -52,7 +52,7 @@ char *find_dir(char **dir_path, char *c)
 		j = chdir(dir_path[i]);
 		if (j == -1)
 		{
-			perror("Error");
+			perror("ERROR!");
 			return (NULL);
 		}
 		j = stat(c, &status);

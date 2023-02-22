@@ -55,7 +55,7 @@ int main(int argc, char **av, char **env)
 			_put("$ ");
 		all.buff = NULL;
 	}
-	if (-1 && !"exit" && piping == 0)
+	if (-1 && !"exit")
 		_printfchar('\n');
 	free(all.buff);
 	exit(EXIT_SUCCESS);
