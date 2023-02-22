@@ -15,7 +15,7 @@
 int main(int argc, char **av, char **env)
 {
 	int chk;
-	unsigned int piping = 0;
+	/*unsigned int piping = 0;*/
 	size_t n = 0;
 	list all = {NULL, NULL, NULL, NULL, NULL};
 	struct stat status;
@@ -24,22 +24,22 @@ int main(int argc, char **av, char **env)
 
 	(void)argc;
 
-	if (!isatty(STDIN_FILENO))
+	/*if (!isatty(STDIN_FILENO))
 		piping = 1;
 	if (piping == 0)
-		_put("$ ");
+		_put("$ ");*/
 
-	while (getline(&(all.buff), &n, stdin) != -1)
+	while (/*getline(&(all.buff), &n, stdin) != -1*/ 1)
 	{
-		/*_put("$ ");*/
-		/*if (getline(&(all.buff), &n, stdin) == -1)
+		_put("$ ");
+		if (getline(&(all.buff), &n, stdin) == -1)
 		{
 			_printfchar('\n');
 			free(all.arr);
 			return (-1);
-		}*/
+		}
 
-		all.arr = token(all.buff, "\n");
+		all.arr = token(all.buff, " \n");
 		
 		if (all.arr[0] == NULL)
 		{
@@ -67,8 +67,8 @@ int main(int argc, char **av, char **env)
 		forking(av, all);
 
 		free(all.buff);
-		if (piping = 0)
-			_put("$ ");
+		/*if (piping = 0)
+			_put("$ ");*/
 
 		all.buff = NULL;
 	}
