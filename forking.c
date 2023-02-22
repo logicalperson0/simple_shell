@@ -4,32 +4,38 @@
  * forking - fork to child if cmd found
  *
  * @all: struct type list
- * @av: argv parameter
  */
-void forking(char **av, list all)
+void forking(list all)
 {
 	pid_t my_pid;
-	int statu, val;
+	int val, chk;
+	struct stat status;
+
+	chk = stat(all.arr[0], &status);
+	if (chk == -1)
+	{
+		error_p(all.arv[0], all.count, all.buff);
+		_printfs(": not found", 0);
+	}
 
 	my_pid = fork();
 
 	if (my_pid == -1)
 	{
-		perror("Error:");
-		/*free_all(all, ac);*/
-		exit (EXIT_FAILURE);
+		error_p(all.arv[0], all.count, all.buff);
+		_printfs(": not found", 0);
+		/*exit(EXIT_FAILURE);*/
 	}
 
-	if (my_pid == 0)
+	else if (my_pid == 0)
 	{
 		val = execve(all.arr[0], all.arr, all.envts);
 		if (val == -1)
 		{
-			perror(av[0]);
-			/*free_all(all, ac);*/
-			exit (EXIT_FAILURE);
+			/*error_p(all.arv[0], all.count, all.buff);*/
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
-		wait(&statu);
+		wait(0);
 }

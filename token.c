@@ -3,7 +3,8 @@
 /**
  * token - to strtok and assign each arg to a array of char **
  *
- * @all: struct type list
+ * @buff: buffer
+ * @delim: delimiter
  *
  * Return: double ptr to a array
  */

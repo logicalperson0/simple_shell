@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * envt - envt of terminal
+ * @envt: parameter
+ */
+
 void envt(char **envt)
 {
 	unsigned int i;

@@ -25,6 +25,7 @@ typedef struct free_all_lists
 	char **arr;
 	char **arv;
 	char **envts;
+	int count;
 } list;
 
 /*functions for the shell*/
@@ -39,10 +40,16 @@ int _printnum(int num);
 
 /*to strtok and return a char **array*/ 
 char **token(char *buff, char *delim);
-void forking(char **av, list all);
+void forking(list all);
 
 void envt(char **envt);
 
-void free_all(list free_list, int ac);
+/* frees the heap*/
+void free_all(char **array);
+void free_envt(char **envts);
+
+/* prints out the error*/
+void error_p(char *argv, int c, char *cmd);
+void error_out(char *argv, int c, char *cmd);
 
 #endif

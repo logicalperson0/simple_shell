@@ -26,7 +26,7 @@ ssize_t _put(char *strs)
 
 	while (strs[i])
 		i++;
-	j = write (1, strs, i);
+	j = write(1, strs, i);
 	if (j != i)
 	{
 		perror("Fatal Error");
