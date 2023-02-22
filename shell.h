@@ -64,7 +64,7 @@ void free_all(char **array);
 void error_p(char *argv, int c, char *cmd);
 void error_out(char *argv, int c, char *cmd);
 
-/* for the ^C interput*/
+/* for the ^C interput assigned int*/
 unsigned int sig_flag;
 
 #endif
