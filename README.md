@@ -29,3 +29,4 @@ description ==> a function that writes the character c to standard output
 Description ==> stores all the prototypes used and connect files to standard and individual library
 
 10._strlen
+Description ==> function that shows the length of a string
