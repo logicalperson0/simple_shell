@@ -32,4 +32,4 @@ Description ==> stores all the prototypes used and connect files to standard and
 Description ==> function that shows the length of a string
 
 11. _printfs
-Description ==>
+Description ==> function that prints to standard output of the shell
