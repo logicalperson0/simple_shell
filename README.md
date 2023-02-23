@@ -26,3 +26,5 @@ Description ==> function that prints the index of the envt
 description ==> a function that writes the character c to standard output
 
 9. shell.h
+Description ==> stores all the prototypes used and connect files to standard and individual library
+
