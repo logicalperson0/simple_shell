@@ -13,3 +13,5 @@ Description ==> function that compares two strings
 4. combine_path
 Description ==> function that Combines two strings of dir and the cmd
 
+5. error_p
+Description ==> function that prints message error when cmd not found
