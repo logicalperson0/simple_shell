@@ -10,3 +10,6 @@ Description ==> a function that assigns each argument to an array
 3. strcmp
 Description ==> function that compares two strings
 
+4. combine_path
+Description ==> function that Combines two strings of dir and the cmd
+
