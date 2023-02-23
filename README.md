@@ -6,3 +6,7 @@ Description ==> Handles the ctrl-c signal interrupt
 
 2. strtok
 Description ==> a function that assigns each argument to an array
+
+3. strcmp
+Description ==> function that compares two strings
+
