@@ -23,3 +23,4 @@ Description ==> function that frees the heap
 Description ==> function that prints the index of the envt
 
 8._printfchar
+description ==> a function that writes the character c to standard output
