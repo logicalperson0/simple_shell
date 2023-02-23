@@ -18,3 +18,5 @@ Description ==> function that prints message error when cmd not found
 
 6. free_all
 Description ==> function that frees the heap
+
+7. envt_i
