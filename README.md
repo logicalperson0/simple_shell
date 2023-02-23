@@ -4,3 +4,5 @@ This are the file:
 1. simple sh
 Description ==> Handles the ctrl-c signal interrupt
 
+2. strtok
+Description ==> a function that assigns each argument to an array
