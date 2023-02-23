@@ -21,3 +21,5 @@ Description ==> function that frees the heap
 
 7. envt_i
 Description ==> function that prints the index of the envt
+
+8._printfchar
