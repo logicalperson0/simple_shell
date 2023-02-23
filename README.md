@@ -30,3 +30,6 @@ Description ==> stores all the prototypes used and connect files to standard and
 
 10._strlen
 Description ==> function that shows the length of a string
+
+11. _printfs
+Description ==>
