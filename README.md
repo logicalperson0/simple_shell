@@ -28,3 +28,4 @@ description ==> a function that writes the character c to standard output
 9. shell.h
 Description ==> stores all the prototypes used and connect files to standard and individual library
 
+10._strlen
